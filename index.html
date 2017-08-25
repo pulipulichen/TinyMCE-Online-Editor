@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Semantic UI: 
+Button: https://semantic-ui.com/elements/button.html
+Grid: https://semantic-ui.com/collections/grid.html
+Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/Font-Awesome/icons/
 -->
 <html>
     <head>
@@ -10,10 +11,61 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" />
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.css" />
+        <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" />
+        <script src="//pulipulichen.github.io/blogger/posts/2016/12/semantic/semantic.min.js"></script>
     </head>
     <body>
-        <textarea id="textbox"></textarea>
-        <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
-        <script src="script.js"></script>
+
+<form class="ui form">
+<div class="ui two column grid">
+    <div class="column">
+        <button type="button" class="fluid ui labeled icon button">
+            <i class="folder open outline icon"></i>
+            LOAD
+        </button>
+    </div>
+    <div class="column">
+        <button type="button" class="fluid ui labeled icon button">
+            <i class="file outline icon"></i>
+            NEW
+        </button>
+    </div>
+</div>
+<div class="field">
+    <label>File Name:</label>
+    <input type="text" name="file_name" placeholder="File Name">
+</div>
+
+<textarea id="file_content"></textarea>
+<div class="ui two column grid">
+    <div class="column">
+        <button type="button" class="fluid ui labeled icon button">
+            <i class="copy icon"></i>
+            COPY HTML
+        </button>
+    </div>
+    <div class="column">
+        <div class="ui action input">
+            <select class="ui compact selection dropdown file-format">
+                <option selected="" value="html">HTML (.html)</option>
+                <option value="docx">Word (.docx)</option>
+                <option value="odt">OpenDocument (.odt)</option>
+            </select>
+            <div type="submit" class="ui right labeled icon button">
+                SAVE
+                <i class="save icon"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>
+
+<script src='//cdn.tinymce.com/4/tinymce.min.js'></script> 
+<script src="script.js"></script>
+
     </body>
 </html>

@@ -28,8 +28,8 @@ tinymce.init({
     'insertdatetime media nonbreaking save table contextmenu directionality',
     'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
   ],
-  toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image  tableprops',
-  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample code ',
+  toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
+  toolbar2: 'link image tableprops | print preview media | forecolor backcolor emoticons | codesample code ',
   image_advtab: true,
   templates: [{
     title: 'Test template 1',

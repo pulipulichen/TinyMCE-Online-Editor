@@ -1,12 +1,22 @@
 body {
     margin: 0;
+    overflow-y: hidden;
 }
-#textbox {
+#file_content {
     width: 100vw;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 250px);
 }
 
 .mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {
-  height: calc(100vh - 143px);
+  height: calc(100vh - 20.5rem);
 }
 .mce-edit-area > iframe { height: calc(100vh - 143px) !important; }
+
+select.file-format {
+    font-size: 0.8rem;
+    width: calc(50vw - 9rem) !important;
+}
+
+.mce-flow-layout {
+    white-space: inherit !important;
+}
