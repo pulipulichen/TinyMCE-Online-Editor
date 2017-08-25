@@ -25,6 +25,12 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
         <link rel="icon" href="images/favicon-32x32.png" sizes="32x32">
         <link rel="icon" href="images/favicon-48x48.png" sizes="48x48">
         <link rel="icon" href="images/favicon-96x96.png" sizes="96x96">
+        
+        <script src="string-utils.js"></script>
+        
+        <script src="vender/FileSaver.js"></script>
+        <script src="vender/jszip.js"></script>
+        <script src="vender/docx.js"></script>
     </head>
     <body>
 
@@ -50,7 +56,13 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
 
 <textarea id="file_content">Content</textarea>
 
-<div class="ui two column grid">
+<div class="ui three column grid">
+    <div class="column">
+        <button type="button" class="fluid ui labeled icon button" id="preview_button">
+            <i class="view icon"></i>
+            PREVIEW
+        </button>
+    </div>
     <div class="column">
         <button type="button" class="fluid ui labeled icon button" copy_from="#file_content">
             <i class="copy icon"></i>
@@ -59,12 +71,12 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
     </div>
     <div class="column">
         <div class="ui action input">
-            <select class="ui compact selection dropdown file-format">
-                <option selected="" value="html">HTML (.html)</option>
-                <option value="docx">Word (.docx)</option>
+            <select class="ui compact selection dropdown file-format" id="file_format">
+                <option value="html">HTML (.html)</option>
+                <option value="docx" selected="" >Word (.docx)</option>
                 <option value="odt">OpenDocument (.odt)</option>
             </select>
-            <div type="submit" class="ui right labeled icon button">
+            <div type="submit" class="ui right labeled icon button" id="save_button">
                 SAVE
                 <i class="save icon"></i>
             </div>
@@ -76,6 +88,18 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
 
 <script src='//cdn.tinymce.com/4/tinymce.min.js'></script> 
 <script src="script.js"></script>
+
+<!-- ------------------------------------------------------------ -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37178375-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
     </body>
 </html>

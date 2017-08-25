@@ -15,7 +15,7 @@ body {
 
 select.file-format {
     font-size: 0.8rem;
-    width: calc(50vw - 9rem) !important;
+    width: calc(33vw - 9rem) !important;
 }
 
 .mce-flow-layout {
