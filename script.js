@@ -60,7 +60,7 @@ tinymce.init({
 };  // init_tinymce = function () {
 
 $(function () {
-    init_tinymce(); 
+    //init_tinymce(); 
 });
 
 // ----------------------
@@ -177,7 +177,7 @@ $(function () {
         }
     });
     
-    _preview_file(); //for test
+    //_preview_file(); //for test
 });
 
 // ----------------------
