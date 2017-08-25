@@ -106,6 +106,9 @@ var _save_file_name_filter = function (_file_name, _file_format) {
         }
     }
     
+    var _timestamp = generate_time_string();
+    _file_name = _file_name.split("{timestamp}").join(_timestamp);
+    
     return _file_name;
 };
 
@@ -138,4 +141,16 @@ var _preview_file = function () {
 $(function () {
     $("#preview_button").click(_preview_file);
     //_preview_file(); //for test
+});
+
+// ----------------------
+
+var _new_file = function () {
+    $("#file_name").val("HTML file {timestamp}").change();
+    $("#file_content").val("").change();
+};
+
+$(function () {
+    $("#new_button").click(_new_file);
+    //_new_file(); //for test
 });
