@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+}
+#textbox {
+    width: 100vw;
+    height: calc(100vh - 150px);
+}
+
+.mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {
+  height: calc(100vh - 143px);
+}
+.mce-edit-area > iframe { height: calc(100vh - 143px) !important; }
