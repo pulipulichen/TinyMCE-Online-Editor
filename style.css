@@ -4,7 +4,8 @@ body {
 }
 #file_content {
     width: 100vw;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 10.5rem);
+    max-height: initial;
 }
 
 .mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {
