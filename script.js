@@ -154,3 +154,14 @@ $(function () {
     $("#new_button").click(_new_file);
     //_new_file(); //for test
 });
+
+// ------------------------
+
+var _load_file = function () {
+    $("#input_html_file").click();
+};
+
+$(function () {
+    $("#load_button").click(_new_file);
+    //_new_file(); //for test
+});

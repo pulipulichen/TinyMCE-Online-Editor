@@ -21,3 +21,7 @@ select.file-format {
 .mce-flow-layout {
     white-space: inherit !important;
 }
+
+#input_html_file {
+    /* display: none; */
+}

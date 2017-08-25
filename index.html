@@ -29,6 +29,8 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
         <script src="string-utils.js"></script>
         
         <script src="vender/FileSaver.js"></script>
+        
+        <script src="input-file-loader.js"></script>
     </head>
     <body>
 
@@ -39,6 +41,8 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
             <i class="folder open outline icon"></i>
             LOAD
         </button>
+        <input type="file" class="input-field" 
+               id="input_html_file" load_content_to="#file_content" load_filename_to="#file_name" />
     </div>
     <div class="column">
         <button type="button" class="fluid ui labeled icon button" id="new_button">
