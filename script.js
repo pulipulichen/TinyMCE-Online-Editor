@@ -34,6 +34,7 @@ tinymce.init({
   toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
   toolbar2: 'link image tableprops | print preview media | forecolor backcolor emoticons | codesample code ',
   image_advtab: true,
+  /*
   templates: [{
     title: 'Test template 1',
     content: 'Test 1'
@@ -41,16 +42,25 @@ tinymce.init({
     title: 'Test template 2',
     content: 'Test 2'
   }],
+  */
   content_css: [
     '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
     '//www.tinymce.com/css/codepen.min.css'
-  ]
+  ],
+  setup: function(editor) {
+        editor.on('change', function(e) {
+            //console.log('change event', e);
+            //tinymce.get('file_content').getContent();
+            tinymce.triggerSave();
+            _update_preview_window();
+        });
+    }
 });
 
 };  // init_tinymce = function () {
 
 $(function () {
-    //init_tinymce(); 
+    init_tinymce(); 
 });
 
 // ----------------------
@@ -125,22 +135,49 @@ $(function () {
 
 // ----------------------
 
+var _preview_window = undefined;
+
 var _preview_file = function () {
+    
+    var _screen_height = screen.height;
+    var _screen_width = screen.width;
+    _preview_window = window.open("", "tinymce_preview", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes"
+                + ", left=" + parseInt(_screen_width/2, 10) + ", width=" + parseInt(_screen_width/2, 10)
+                + ", top=0, height=" + _screen_height);
+    
+    _update_preview_window();
+};
+
+var _update_preview_window = function () {
+    if (_preview_window === undefined 
+            || _preview_window === false) {
+        return;
+    }
     
     var _file_name = $("#file_name").val().trim();
     var _file_content = $("#file_content").val().trim();
     var _file_format = $("#file_format").val();
     
     _file_name = _save_file_name_filter(_file_name, _file_format);
+    _file_name = "(PREVIEW) " + _file_name;
     
-    var _win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=780, height=200, top="+(screen.height-400)+", left="+(screen.width-840));
-    _win.document.body.innerHTML = _file_content;
-    _win.document.title = _file_name;
+    _preview_window.document.body.innerHTML = _file_content;
+    _preview_window.document.title = _file_name;
 };
 
 $(function () {
     $("#preview_button").click(_preview_file);
-    //_preview_file(); //for test
+    
+    $("#file_name").change(_update_preview_window);
+    $("#file_content").change(_update_preview_window);
+    
+    $(window).unload(function () {
+        if (_preview_window !== undefined) {
+            _preview_window.close();
+        }
+    });
+    
+    _preview_file(); //for test
 });
 
 // ----------------------
@@ -162,6 +199,18 @@ var _load_file = function () {
 };
 
 $(function () {
-    $("#load_button").click(_new_file);
+    $("#load_button").click(_load_file);
     //_new_file(); //for test
+    
 });
+
+// ----------------------------
+
+$(function () {
+    $("#file_content").change(function () {
+        var _file_content = $(this).val().trim();
+        tinymce.get('file_content').setContent(_file_content);
+        console.log(_file_content);
+    });
+});
+

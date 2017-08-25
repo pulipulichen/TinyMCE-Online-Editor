@@ -23,5 +23,5 @@ select.file-format {
 }
 
 #input_html_file {
-    /* display: none; */
+    display: none;
 }

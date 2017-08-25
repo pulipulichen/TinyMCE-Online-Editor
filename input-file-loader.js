@@ -17,7 +17,7 @@ $(function () {
         if (_input.attr("load_filename_to") !== undefined) {
            var _load_filename_to = $(_input.attr("load_filename_to"));
            if (_load_filename_to.length !== 0) {
-               _load_filename_to.val(_original_file_name);
+               _load_filename_to.val(_original_file_name).change();
            }
         }
 
@@ -29,7 +29,7 @@ $(function () {
             }
 
             var _file_content =  evt.target.result;
-            _load_content_to.val(_file_content);
+            _load_content_to.val(_file_content).change();
             _input.val("");
         };
 
