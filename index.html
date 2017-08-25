@@ -29,8 +29,6 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
         <script src="string-utils.js"></script>
         
         <script src="vender/FileSaver.js"></script>
-        <script src="vender/jszip.js"></script>
-        <script src="vender/docx.js"></script>
     </head>
     <body>
 
@@ -72,8 +70,7 @@ Icon: https://semantic-ui.com/elements/icon.html  http://fortawesome.github.io/F
     <div class="column">
         <div class="ui action input">
             <select class="ui compact selection dropdown file-format" id="file_format">
-                <option value="html">HTML (.html)</option>
-                <option value="docx" selected="" >Word (.docx)</option>
+                <option value="html" selected="">HTML (.html)</option>
                 <option value="odt">OpenDocument (.odt)</option>
             </select>
             <div type="submit" class="ui right labeled icon button" id="save_button">

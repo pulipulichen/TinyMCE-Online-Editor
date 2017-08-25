@@ -83,11 +83,6 @@ var _save_file = function () {
             _file_name = _file_name + ".html";
         }
     }
-    else if (_file_format === "docx") {
-        if (_file_name.endsWith(".docx") === false) {
-            _file_name = _file_name + ".docx";
-        }
-    }
     else if (_file_format === "odt") {
         if (_file_name.endsWith(".odt") === false) {
             _file_name = _file_name + ".odt";
@@ -96,27 +91,13 @@ var _save_file = function () {
     
     // -----------
     
-    if (_file_format !== "docx") {
-        _file_content = '<html><head><title>' + _file_name +'</title></head>' 
-                + '<body>' + _file_content + '</body>'
-                + '</html>';
-    }
-    else {
-        _file_content = '<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">'
-                + '<head>'
-                    + '<meta http-equiv=Content-Type content="text/html; charset=big5"><meta name=ProgId content=Word.Document><meta name=Generator content="Microsoft Word 15"><meta name=Originator content="Microsoft Word 15">'
-                    + '<title>' + _file_name +'</title>'
-                + '</head>' 
-                + '<body>' + _file_content + '</body>'
-                + '</html>';
-    }
+    _file_content = '<html><head><title>' + _file_name +'</title></head>' 
+            + '<body>' + _file_content + '</body>'
+            + '</html>';
     
     // -------------
     
     var _character_encoding = "utf-8";
-    if (_file_format === "docx") {
-        _character_encoding = "big5";
-    }
     
     // ------------
     
@@ -126,7 +107,6 @@ var _save_file = function () {
 
 $(function () {
     $("#save_button").click(_save_file);
-    _save_file(); // for test
 });
 
 // ----------------------
