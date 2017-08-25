@@ -77,6 +77,23 @@ var _save_file = function () {
     
     // ---------------
     
+    _file_name = _save_file_name_filter(_file_name, _file_format);
+    
+    // -----------
+    
+    _file_content = _save_file_content_filter(_file_content, _file_name);
+    
+    // -------------
+    
+    var _character_encoding = "utf-8";
+    
+    // ------------
+    
+    var blob = new Blob([_file_content], {type: "text/html;charset=" + _character_encoding});
+    saveAs(blob, _file_name);
+};
+
+var _save_file_name_filter = function (_file_name, _file_format) {
     if (_file_format === "html") {
         if (_file_name.endsWith(".html") === false 
                 && _file_name.endsWith(".htm") === false) {
@@ -89,20 +106,14 @@ var _save_file = function () {
         }
     }
     
-    // -----------
-    
-    _file_content = '<html><head><title>' + _file_name +'</title></head>' 
+    return _file_name;
+};
+
+
+var _save_file_content_filter = function (_file_content, _file_name) {
+    return '<html><head><title>' + _file_name +'</title></head>' 
             + '<body>' + _file_content + '</body>'
             + '</html>';
-    
-    // -------------
-    
-    var _character_encoding = "utf-8";
-    
-    // ------------
-    
-    var blob = new Blob([_file_content], {type: "text/html;charset=" + _character_encoding});
-    saveAs(blob, _file_name);
 };
 
 $(function () {
@@ -110,3 +121,21 @@ $(function () {
 });
 
 // ----------------------
+
+var _preview_file = function () {
+    
+    var _file_name = $("#file_name").val().trim();
+    var _file_content = $("#file_content").val().trim();
+    var _file_format = $("#file_format").val();
+    
+    _file_name = _save_file_name_filter(_file_name, _file_format);
+    
+    var _win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=780, height=200, top="+(screen.height-400)+", left="+(screen.width-840));
+    _win.document.body.innerHTML = _file_content;
+    _win.document.title = _file_name;
+};
+
+$(function () {
+    $("#preview_button").click(_preview_file);
+    //_preview_file(); //for test
+});
