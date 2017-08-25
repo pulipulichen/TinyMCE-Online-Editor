@@ -60,7 +60,7 @@ tinymce.init({
 };  // init_tinymce = function () {
 
 $(function () {
-    //init_tinymce(); 
+    init_tinymce(); 
 });
 
 // ----------------------
@@ -83,6 +83,10 @@ $(function () {
 var _save_file = function () {
     var _file_name = $("#file_name").val().trim();
     var _file_content = $("#file_content").val().trim();
+    if (_file_content === "") {
+        return;
+    }
+    
     var _file_format = $("#file_format").val();
     
     // ---------------
