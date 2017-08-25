@@ -49,6 +49,21 @@ tinymce.init({
 
 };  // init_tinymce = function () {
 
+// ----------------------
+
+var _file_name_change = function () {
+    var _file_name = $("#file_name").val().trim();
+    
+    if (_file_name !== "") {
+        document.title = _file_name;
+    }
+};
+
+// ----------------------
+
 $(function () {
     //init_tinymce(); 
+    
+    $("#file_name").change(_file_name_change);
+    _file_name_change();
 });
