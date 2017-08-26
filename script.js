@@ -53,6 +53,7 @@ tinymce.init({
             //tinymce.get('file_content').getContent();
             tinymce.triggerSave();
             _update_preview_window();
+            _storage_save();
         });
     }
 });
@@ -142,7 +143,6 @@ $(function () {
 var _preview_window = undefined;
 
 var _preview_file = function () {
-    
     var _screen_height = screen.height;
     var _screen_width = screen.width;
     _preview_window = window.open("", "tinymce_preview", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes"
@@ -153,6 +153,8 @@ var _preview_file = function () {
 };
 
 var _update_preview_window = function () {
+    
+    
     if (_preview_window === undefined 
             || _preview_window === false) {
         return;
@@ -213,8 +215,74 @@ $(function () {
 $(function () {
     $("#file_content").change(function () {
         var _file_content = $(this).val().trim();
-        tinymce.get('file_content').setContent(_file_content);
-        console.log(_file_content);
+        if (_file_content !== null && _file_content !== undefined 
+                && tinymce.get('file_content') !== null
+                && _file_content !== tinymce.get('file_content').getContent()) {
+            tinymce.get('file_content').setContent(_file_content);
+        }
+        //console.log(_file_content);
     });
 });
 
+// ---------------------------
+
+/**
+ * @type Boolean 是否啟用本地端儲存
+ * @author Pulipuli Chen 20170826
+ */
+
+var STORAGE_ENABLE = true;
+STORAGE_ENABLE = false; // for test
+if (typeof(Storage) === "undefined") {
+    STORAGE_ENABLE = false;
+}
+
+/**
+ * 儲存在localStorage
+ * @author Pulipuli Chen 20170826
+ */
+var _storage_save = function () {
+    if (STORAGE_ENABLE === false) {
+        return;
+    }
+    
+    var _file_name = $("#file_name").val().trim();
+    var _file_content = $("#file_content").val().trim();
+    var _file_format = $("#file_format").val();
+    
+    // Store
+    localStorage.setItem("file_name", _file_name);
+    localStorage.setItem("file_content", _file_content);
+    localStorage.setItem("file_format", _file_format);
+};
+
+var _storage_load = function () {
+    if (STORAGE_ENABLE === false) {
+        return;
+    }
+    
+    var _file_name = localStorage.getItem("file_name");
+    var _file_content = localStorage.getItem("file_content");
+    var _file_format = localStorage.getItem("file_format");
+
+    if (_file_name !== null && _file_name !== undefined) {
+        $("#file_name").val(_file_name).change();
+    } 
+    
+    if (_file_content !== null && _file_content !== undefined) {
+        $("#file_content").val(_file_content).change();
+    }
+    
+    if (_file_format !== null && _file_format !== undefined) {
+        $("#file_format").find('option[value="' + _file_format + '"]').attr("selected", "selected");
+    }
+    
+    return this;
+};
+
+$(function () {
+    $("#file_name").change(_storage_save);
+    $("#file_content").change(_storage_save);
+    $("#file_format").change(_storage_save);
+    _storage_load();
+});
