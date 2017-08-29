@@ -59,9 +59,9 @@ tinymce.init({
 
 };  // init_tinymce = function () {
 
-$(function () {
-    init_tinymce(); 
-});
+//$(function () {
+//    init_tinymce(); 
+//});
 
 // ----------------------
 
@@ -75,7 +75,7 @@ var _file_name_change = function () {
 
 $(function () {
     $("#file_name").change(_file_name_change);
-    _file_name_change();
+    //_file_name_change();
 });
 
 // ----------------------
@@ -214,7 +214,21 @@ $(function () {
     $("#file_content").change(function () {
         var _file_content = $(this).val().trim();
         tinymce.get('file_content').setContent(_file_content);
-        console.log(_file_content);
+        //console.log(_file_content);
     });
 });
 
+// ---------------------------------
+
+/**
+ * 所有要開始啟動的功能
+ */
+var _startup = function () {
+    _file_name_change();
+    
+    init_tinymce(); 
+};
+
+$(function () {
+    _startup();
+});
