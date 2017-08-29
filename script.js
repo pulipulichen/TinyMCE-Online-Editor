@@ -242,12 +242,76 @@ var _load_file_parameter = function () {
     }
 };
 
+// ---------------------------
+
+/**
+ * @type Boolean 是否啟用本地端儲存
+ * @author Pulipuli Chen 20170826
+ */
+
+var STORAGE_ENABLE = true;
+//STORAGE_ENABLE = false; // for test
+if (typeof(Storage) === "undefined") {
+    STORAGE_ENABLE = false;
+}
+
+/**
+ * 儲存在localStorage
+ * @author Pulipuli Chen 20170826
+ */
+var _storage_save = function () {
+    if (STORAGE_ENABLE === false) {
+        return;
+    }
+    
+    var _file_name = $("#file_name").val().trim();
+    var _file_content = $("#file_content").val().trim();
+    var _file_format = $("#file_format").val();
+    
+    // Store
+    localStorage.setItem("file_name", _file_name);
+    localStorage.setItem("file_content", _file_content);
+    localStorage.setItem("file_format", _file_format);
+};
+
+var _storage_load = function () {
+    if (STORAGE_ENABLE === false) {
+        return;
+    }
+    
+    var _file_name = localStorage.getItem("file_name");
+    var _file_content = localStorage.getItem("file_content");
+    var _file_format = localStorage.getItem("file_format");
+
+    if (_file_name !== null && _file_name !== undefined) {
+        $("#file_name").val(_file_name).change();
+    } 
+    
+    if (_file_content !== null && _file_content !== undefined) {
+        $("#file_content").val(_file_content).change();
+    }
+    
+    if (_file_format !== null && _file_format !== undefined) {
+        $("#file_format").find('option[value="' + _file_format + '"]').attr("selected", "selected");
+    }
+    
+    return this;
+};
+
+$(function () {
+    $("#file_name").change(_storage_save);
+    $("#file_content").change(_storage_save);
+    $("#file_format").change(_storage_save);
+});
+
 // ---------------------------------
 
 /**
  * 所有要開始啟動的功能
  */
 var _startup = function () {
+    _storage_load();
+            
     _load_file_parameter();
     
     _load_filename_parameter();
