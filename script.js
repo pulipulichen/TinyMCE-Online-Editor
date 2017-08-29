@@ -213,10 +213,34 @@ $(function () {
 $(function () {
     $("#file_content").change(function () {
         var _file_content = $(this).val().trim();
-        tinymce.get('file_content').setContent(_file_content);
-        //console.log(_file_content);
+        if (tinymce.get('file_content') !== null) {
+            tinymce.get('file_content').setContent(_file_content);
+            //console.log(_file_content);
+        }
     });
 });
+
+// ---------------------------------
+
+var _load_filename_parameter = function () {
+    if (parse_query_string("filename") !== null) {
+        $("#file_name").val(parse_query_string("filename")).change();
+    }
+};
+
+var _load_content_parameter = function () {
+    if (parse_query_string("content") !== null) {
+        $("#file_content").val(parse_query_string("content")).change();
+    }
+};
+
+var _load_file_parameter = function () {
+    if (parse_query_string("file") !== null) {
+        $.get(parse_query_string("file"), function (_result)  {
+            $("#file_content").val(_result);
+        });
+    }
+};
 
 // ---------------------------------
 
@@ -224,6 +248,11 @@ $(function () {
  * 所有要開始啟動的功能
  */
 var _startup = function () {
+    _load_file_parameter();
+    
+    _load_filename_parameter();
+    _load_content_parameter();
+    
     _file_name_change();
     
     init_tinymce(); 
