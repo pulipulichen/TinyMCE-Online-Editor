@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TinyMCE Online Editor Link Builder</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <label>
+            <span style="display: inline-block;width: 100px;">
+                Filename:
+            </span>
+            <input type="text" id="filename" class="input" style="width: calc( 100vw - 200px );" />
+        </label>
+        <br />
+        <label>
+            <span style="display: inline-block;width: 100px;">
+                Content:
+            </span>
+            <input type="text" id="content" class="input" style="width: calc( 100vw - 200px );" />
+        </label>
+        <br />
+        <label>
+            <span style="display: inline-block;width: 100px;">
+                Link:
+            </span>
+            <a id="output" href="https://pulipulichen.github.io/TinyMCE-Online-Editor/" target="_blank">https://pulipulichen.github.io/TinyMCE-Online-Editor/</a>
+            <div id="warning" style="color:red;display: none;">網址長度超過上限2083個字，請減少輸入的參數</div>
+        </label>
+        
+        <script>
+$(function () {
+    $(".input").change(function () {
+        var _parameters = [];
+        var _filename = $("#filename").val().trim();
+        if (_filename !== "") {
+            _parameters.push("filename=" + encodeURI(_filename) );
+        }
+        var _content = $("#content").val().trim();
+        if (_content !== "") {
+            _parameters.push("content=" + encodeURI(_content) );
+        }
+        
+        
+        //var _original_url = "https://pulipulichen.github.io/TinyMCE-Online-Editor/";
+        var _original_url = "/TinyMCE-Online-Editor/";
+        var _url = _original_url;
+        if (_parameters.length > 0) {
+            _url = _url + "?" + _parameters.join("&");
+        }
+        
+        if (_url.length > 2083) {
+            $("#warning").show();
+            _url = _original_url;
+        }
+        else {
+            $("#warning").hide();
+            $("#output").attr("href", _url).html(_url);
+        }
+    });
+});
+            
+        </script>
+    </body>
+</html>

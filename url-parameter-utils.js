@@ -15,15 +15,18 @@ function parse_query_string(paramName) {
         {
             var sParam =  arrURLParams[i].split("=");
             arrParamNames[i] = sParam[0];
-            if (sParam[1] != "")
-                arrParamValues[i] = unescape(sParam[1]);
-            else
+            if (sParam[1] !== "") {
+                //arrParamValues[i] = unescape(sParam[1]);
+                arrParamValues[i] = decodeURI(sParam[1]);
+            }
+            else {
                 arrParamValues[i] = "No Value";
+            }
         }
 
         for (i=0; i<arrURLParams.length; i++)
         {
-            if (arrParamNames[i] == paramName)
+            if (arrParamNames[i] === paramName)
             {
                 //alert("Parameter:" + arrParamValues[i]);
                 return arrParamValues[i];
