@@ -21,10 +21,12 @@ vender/semantic.min.js
 vender/puli-util.clipboard.js
 #vender/tinymce.min.js
 vender/analytics.js
-https://fonts.gstatic.com/s/lato/v13/H2DMvhDLycM56KNuAtbJYA.woff2
-https://fonts.gstatic.com/s/lato/v13/1YwB1sO8YE1Lyjf12WNiUA.woff2
-https://fonts.gstatic.com/s/lato/v13/PLygLKRVCQnA5fhu3qk5fQ.woff2
 //cdn.tinymce.com/4/tinymce.min.js
 http://cdn.tinymce.com/4/skins/lightgray/skin.min.css
-http://cdn.tinymce.com/4/skins/lightgray/fonts/tinymce.ttf
-http://cdn.tinymce.com/4/skins/lightgray/fonts/tinymce.woff
+http://pulipulichen.github.io/blogger/posts/2016/12/clipboard.min.js
+http://pulipulichen.github.io/blogger/posts/2016/12/semantic/themes/default/assets/fonts/icons.woff2
+
+
+NETWORK:
+# https://stackoverflow.com/a/28918674/6645399
+*

@@ -26,9 +26,9 @@ PULI_UTIL.clipboard = {
                 var clipboard = new Clipboard('#clipboard_button');
             }
             $(function () {
-				if (typeof(_callback) ==="function") {
-					_callback();
-				}
+                if (typeof (_callback) === "function") {
+                    _callback();
+                }
             });
         }
     },
