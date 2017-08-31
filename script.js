@@ -325,11 +325,11 @@ $(function () {
  */
 var _startup = function () {
     _storage_load();
-            
-    _load_file_parameter();
     
     _load_filename_parameter();
     _load_content_parameter();
+            
+    _load_file_parameter();
     
     _file_name_change();
     

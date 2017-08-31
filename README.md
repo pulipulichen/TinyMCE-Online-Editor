@@ -3,3 +3,8 @@
 
 Online Demo: https://pulipulichen.github.io/TinyMCE-Online-Editor/
 GitHub Repositroy: https://github.com/pulipulichen/TinyMCE-Online-Editor
+
+# Load Parameters from URL:
+* https://pulipulichen.github.io/TinyMCE-Online-Editor/?filename=Default%20Filename
+* https://pulipulichen.github.io/TinyMCE-Online-Editor/?content=Default%20Content
+* https://pulipulichen.github.io/TinyMCE-Online-Editor/?filename=Default%20Filename&content=Default%20Content
