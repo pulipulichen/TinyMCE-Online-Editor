@@ -53,6 +53,7 @@ tinymce.init({
             //tinymce.get('file_content').getContent();
             tinymce.triggerSave();
             _update_preview_window();
+            _storage_save();
         });
     }
 });
@@ -149,7 +150,20 @@ var _preview_file = function () {
                 + ", left=" + parseInt(_screen_width/2, 10) + ", width=" + parseInt(_screen_width/2, 10)
                 + ", top=0, height=" + _screen_height);
     
+    //setTimeout(function () {
+    //    _preview_window.moveTo(parseInt(_screen_width/2, 10), 0);
+    //    console.log([parseInt(_screen_width/2, 10)]);
+    //}, 100);
+    
     _update_preview_window();
+    
+    // 改變自己的視窗
+    //window.width = parseInt(_screen_width/2, 10);
+    //window.resizeTo(parseInt(_screen_width/2, 10), _screen_height);
+    //window.moveTo(0, 0);
+    
+    // 不能改變自己的視窗
+    // https://stackoverflow.com/a/7602372/6645399
 };
 
 var _update_preview_window = function () {
