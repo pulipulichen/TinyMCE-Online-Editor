@@ -9,9 +9,12 @@ body {
 }
 
 .mce-edit-area.mce-container.mce-panel.mce-stack-layout-item {
-  height: calc(100vh - 20.5rem);
+    height: calc(100vh - 20.5rem);
 }
-.mce-edit-area > iframe { height: calc(100vh - 143px) !important; }
+.mce-edit-area > iframe { 
+    height: calc(100vh - 143px) !important; 
+    max-height: calc(100vh - 288px) !important; 
+}
 
 select.file-format {
     font-size: 0.8rem;
@@ -24,4 +27,9 @@ select.file-format {
 
 #input_html_file {
     display: none;
+}
+
+.mce-content-body hr {
+    padding: 1px;
+    background-color: black;
 }
