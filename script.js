@@ -4,7 +4,7 @@ init_tinymce = function () {
 tinymce.init({
   selector: 'textarea',
   /*height: 500,*/
-  //language: 'zh_TW',
+  language: 'zh_TW',
   theme: 'modern',
   resize: false,
   style_formats: [
